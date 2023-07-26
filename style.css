@@ -116,7 +116,7 @@ h2 {
 
 }
 
-#miBoton, #botonCarrito, #eliminarProductos, #finalizar {
+button, #miBoton, #botonCarrito, #eliminarProductos, #finalizar {
     padding: 7px 1px;
     border: 0;
     width: 60px;
@@ -130,7 +130,7 @@ h2 {
     font-family: 'Tektur', cursive;
 }
 
-#miBoton:hover, #botonCarrito:hover, #eliminarProductos:hover, #finalizar:hover {
+button:hover,#miBoton:hover, #botonCarrito:hover, #eliminarProductos:hover, #finalizar:hover {
     background-color: #ffffff;
     box-shadow: 0 0 20px #ffffff50;
     color: #000000;

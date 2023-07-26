@@ -68,26 +68,29 @@ function agregarProducto(e) {
     renderizarCarrito()
 }
 function renderizarCarrito() {
-    let carritoVisual = document.getElementById("carrito")
-    carritoVisual= ""
+    const carritoVisual = document.getElementById("carrito")
+    carritoVisual.innerHTML= ""
     carrito.forEach(productos => {
-        let prodEnCarrito = document.createElement("div")
+        const prodEnCarrito = document.createElement("div")
                 prodEnCarrito.setAttribute('class', 'productosCarro')
                  prodEnCarrito.innerHTML=`<p>${productos.nombre}</p>
-                                            <p>${productos.precio}</p>
-                                             <button data-id="${productos.id}" id= "eliminar-${productos.id}"</button>`
+                                            <p>$${productos.precio}</p>
+                                             <button data-id="${productos.id}" id= "eliminar-${productos.id}">Eliminar</button>`
+    
     carritoVisual.appendChild(prodEnCarrito)
-    //botonEliminar = document.getElementById(`eliminar-${productos.id}`)
-    //botonEliminar.addEventListener("click", eliminarProductos)
+    botonEliminar = document.getElementById(`eliminar-${productos.id}`)
+    botonEliminar.addEventListener("click", eliminarProductos)
     })
         
 }
-/*function eliminarProductos(e) {
+function eliminarProductos(e) {
     let id = e.target.id
-    let indice = carrito.findIndex()
+    let indice = carrito.findIndex(productos => productos.id === id)
     carrito.splice(indice, 1)
+    localStorage.setItem("carrito",JSON.stringify[carrito])
     renderizarCarrito()
-    localStorage.setItem("carrito",JSON.stringify[carrito])*/
+    
+}
 function mostrarCarrito() {
     let contenedorPadre = document.getElementById("listaProductos")
     let carritoPadre = document.getElementById("carritoPadre")
