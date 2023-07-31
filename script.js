@@ -1,6 +1,7 @@
 
 /*ecommers*/
-let carrito = []
+let total =0
+let carrito = carritoVisual = []
 let productos = [
     { id: "1", nombre: "Buzo Negro", categoria: "prenda superior", precio: 6000, stock: 10, rutaImagen: "buzoNegro.png" },
     { id: "2", nombre: "Pantalon Negro", categoria: "prenda inferior", precio: 5000, stock: 10, rutaImagen: "pantalonN.jpg" },
@@ -75,8 +76,7 @@ function renderizarCarrito() {
                 prodEnCarrito.setAttribute('class', 'productosCarro')
                  prodEnCarrito.innerHTML=`<p>${productos.nombre}</p>
                                             <p>$${productos.precio}</p>
-                                             <button data-id="${productos.id}" id= "eliminar-${productos.id}">Eliminar</button>`
-    
+                                             <button data-id="${productos.id}" id= "eliminar-${productos.id}">Eliminar</button>`           
     carritoVisual.appendChild(prodEnCarrito)
     botonEliminar = document.getElementById(`eliminar-${productos.id}`)
     botonEliminar.addEventListener("click", eliminarProductos)
@@ -88,8 +88,7 @@ function eliminarProductos(e) {
     let indice = carrito.findIndex(productos => productos.id === id)
     carrito.splice(indice, 1)
     localStorage.setItem("carrito",JSON.stringify[carrito])
-    renderizarCarrito()
-    
+    actualizarTotal()
 }
 function mostrarCarrito() {
     let contenedorPadre = document.getElementById("listaProductos")
@@ -98,9 +97,25 @@ function mostrarCarrito() {
     carritoPadre.classList.toggle("oculto")
 }
 function finalizarCompra() {
-    Swal.fire({
-        icon: 'success',
-        title: 'Bien!',
-        text: 'Has finalizado tu compra',
-      })
+    renderizarCarrito()
+    if (carrito.length <= 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Algo salio mal!',
+            text: 'No tienes articulos en el carrito',
+          })
+        }
+    else {
+        Swal.fire({
+            icon: 'success',
+            title: 'Bien!',
+            text: 'Has finalizado tu compra',
+          })
+    }        
+    
 }
+
+
+
+
+    

@@ -177,3 +177,8 @@ button:hover,#miBoton:hover, #botonCarrito:hover, #eliminarProductos:hover, #fin
 .oculto {
     display: none;
 }
+
+#sumaTotal{
+    background-color: #000000;
+
+}
